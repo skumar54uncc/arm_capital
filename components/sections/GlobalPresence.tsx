@@ -51,7 +51,10 @@ export default function GlobalPresence() {
             initial={{ opacity: 0, x: -30 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="relative h-[500px] bg-primary-900/50 border border-primary-800 overflow-hidden rounded-sm"
+            className="relative h-[500px] bg-primary-900/30 border border-primary-800/50 overflow-hidden rounded-lg shadow-2xl"
+            style={{
+              boxShadow: '0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(14, 165, 233, 0.1)',
+            }}
           >
             <LeafletMap 
               regions={regions}
