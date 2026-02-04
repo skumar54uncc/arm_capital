@@ -112,7 +112,7 @@ export default function ContactFooter() {
                 IMPORTANT DISCLOSURES
               </p>
               <p>
-                This website is for informational purposes only and does not constitute an offer to sell, or a solicitation of an offer to buy, any securities or any interest in any investment fund managed by ARM Capital or its affiliates (collectively, "ARM Capital"). Any such offer or solicitation will be made only through a confidential private placement memorandum and related documents (the "Offering Documents") and only in jurisdictions where permitted by law.
+                This website is for informational purposes only and does not constitute an offer to sell, or a solicitation of an offer to buy, any securities or any interest in any investment fund managed by ARM Capital or its affiliates (collectively, &quot;ARM Capital&quot;). Any such offer or solicitation will be made only through a confidential private placement memorandum and related documents (the &quot;Offering Documents&quot;) and only in jurisdictions where permitted by law.
               </p>
               <p>
                 Past performance is not indicative of future results. No representation is being made that any investment or account will or is likely to achieve profits or losses similar to those shown. There can be no assurance that ARM Capital will achieve its investment objectives or that any investment will be profitable. All investments involve risk, including the possible loss of principal.
