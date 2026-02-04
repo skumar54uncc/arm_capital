@@ -24,10 +24,12 @@ export default function GlobalPresence() {
     const token = process.env.NEXT_PUBLIC_MAPBOX_TOKEN
     
     if (token && typeof window !== 'undefined' && mapContainerRef.current && !mapInstance) {
-      // Dynamically import Mapbox CSS
-      import('mapbox-gl/dist/mapbox-gl.css')
-      
+      // Dynamically import Mapbox library
       import('mapbox-gl').then((mapboxgl) => {
+        // Import CSS dynamically (TypeScript ignore for CSS import)
+        // @ts-ignore
+        import('mapbox-gl/dist/mapbox-gl.css')
+        
         // @ts-ignore
         mapboxgl.default.accessToken = token
         
@@ -94,6 +96,7 @@ export default function GlobalPresence() {
               type: 'geojson',
               data: {
                 type: 'Feature',
+                properties: {},
                 geometry: {
                   type: 'Polygon',
                   coordinates: [coordinates],
@@ -131,7 +134,7 @@ export default function GlobalPresence() {
           map.remove()
         }
       }).catch((err) => {
-        console.log('Mapbox not available, using SVG fallback')
+        // Mapbox not available, using SVG fallback
       })
     }
   }, [mapInstance])
