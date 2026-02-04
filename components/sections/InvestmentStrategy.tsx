@@ -3,15 +3,15 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef, useState } from 'react'
-import { TrendingUp, TrendingDown, Globe, BarChart3 } from 'lucide-react'
+import { TrendingUp, TrendingDown, Globe, BarChart3, Brain, Building2, Heart, Bot, Zap, Code } from 'lucide-react'
 
 const sectors = [
-  'AI & Machine Learning',
-  'Financial Services',
-  'Medical and Biotech',
-  'Robotics',
-  'Energy',
-  'Software & Internet',
+  { name: 'AI & Machine Learning', icon: Brain },
+  { name: 'Financial Services', icon: Building2 },
+  { name: 'Medical and Biotech', icon: Heart },
+  { name: 'Robotics', icon: Bot },
+  { name: 'Energy', icon: Zap },
+  { name: 'Software & Internet', icon: Code },
 ]
 
 const strategyData = {
@@ -146,23 +146,31 @@ export default function InvestmentStrategy() {
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.6, delay: 0.6 }}
         >
-          <h3 className="text-2xl font-serif font-bold mb-6 text-center">
+          <h3 className="text-3xl md:text-4xl font-serif font-bold mb-10 md:mb-12 text-center">
             Sector Focus
           </h3>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-            {sectors.map((sector, index) => (
-              <motion.div
-                key={sector}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.4, delay: 0.7 + index * 0.1 }}
-                className="p-4 bg-primary-900/50 border border-primary-800 hover:border-primary-700 hover:bg-primary-900/70 transition-all duration-300 text-center"
-              >
-                <p className="text-sm text-primary-300">{sector}</p>
-              </motion.div>
-            ))}
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-5 md:gap-6">
+            {sectors.map((sector, index) => {
+              const Icon = sector.icon
+              return (
+                <motion.div
+                  key={sector.name}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
+                  transition={{ duration: 0.4, delay: 0.7 + index * 0.1 }}
+                  className="p-6 md:p-8 bg-primary-900/50 border border-primary-800 hover:border-primary-700 hover:bg-primary-900/70 transition-all duration-300 text-center group"
+                >
+                  <div className="flex flex-col items-center gap-4">
+                    <div className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-primary-800/50 flex items-center justify-center group-hover:bg-accent-400/10 transition-colors duration-300">
+                      <Icon className="w-6 h-6 md:w-7 md:h-7 text-accent-400 group-hover:text-accent-300 transition-colors duration-300" />
+                    </div>
+                    <p className="text-base md:text-lg font-medium text-primary-200 leading-tight">{sector.name}</p>
+                  </div>
+                </motion.div>
+              )
+            })}
           </div>
-          <p className="text-xs text-primary-500 text-center mt-6 italic">
+          <p className="text-xs text-primary-500 text-center mt-8 md:mt-10 italic">
             For illustrative purposes only. Sector allocations may vary based on market conditions and opportunity set.
           </p>
         </motion.div>

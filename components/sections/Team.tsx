@@ -44,8 +44,8 @@ const teamMembers = [
     ],
     stats: {
       label: 'Track Record',
-      value: 'Global Equities & FX',
-      detail: 'Active in US, European markets and currencies',
+      value: 'US Equities & Derivatives',
+      detail: 'US equities and derivatives strategies',
     },
   },
   {
@@ -56,12 +56,12 @@ const teamMembers = [
     education: [
       'M.Sc. Investment Management from Bayes Business School, London, UK',
       'Bachelor of Technology in Computer Science',
-      'CFA Level 1',
+      'CFA Level 1 - Cleared',
     ],
     stats: {
       label: 'Track Record',
-      value: 'Indian Equities',
-      detail: '10% YTD from 01 Jan 2025 - 09 Dec 2025',
+      value: 'Global Equities & FX, Indian Equities',
+      detail: 'Active in global markets, currencies, and Indian equity segment',
     },
   },
 ]

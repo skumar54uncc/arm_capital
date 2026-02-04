@@ -228,46 +228,98 @@ export default function Hero() {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: 'easeOut' }}
-        className="relative z-20 container-custom text-center px-4 pb-24"
+        className="relative z-20 container-custom px-4 pb-24"
       >
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold mb-6 text-balance"
-        >
-          ARM CAPITAL
-        </motion.h1>
-        
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-xl md:text-2xl text-primary-300 max-w-3xl mx-auto mb-12 leading-relaxed"
-        >
-          Generating alpha through fundamental research, quantitative analysis, and disciplined portfolio construction across global equity markets.
-        </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-        >
-          <a
-            href="#strategy"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-primary-800 hover:bg-primary-700 border border-primary-700 hover:border-primary-600 text-primary-50 font-medium transition-all duration-300 group"
+        {/* Main Headline */}
+        <div className="text-center mb-12 md:mb-16">
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            className="text-5xl md:text-6xl lg:text-7xl font-serif font-bold mb-8 text-balance tracking-tight"
+            style={{ letterSpacing: '-0.02em' }}
           >
-            Explore Strategy
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-          </a>
-        </motion.div>
+            Alpha Generation
+          </motion.h1>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.45, ease: 'easeOut' }}
+            className="text-lg md:text-xl text-primary-400 font-light tracking-wider mb-10 md:mb-12"
+            style={{ letterSpacing: '0.15em', textTransform: 'uppercase' }}
+          >
+            Driven by
+          </motion.div>
+        </div>
+
+        {/* Three Pillars - Boxed/Highlighted */}
+        <div className="text-center mb-16 md:mb-20">
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.65, ease: [0.22, 1, 0.36, 1] }}
+            className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6 lg:gap-8 max-w-6xl mx-auto"
+          >
+            {[
+              { text: 'Quantitative Research', delay: 0.8 },
+              { text: 'Fundamental Insight', delay: 0.9 },
+              { text: 'Valuation Dislocation', delay: 1.0 },
+            ].map((pillar, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ 
+                  duration: 0.6, 
+                  delay: pillar.delay, 
+                  ease: [0.22, 1, 0.36, 1] 
+                }}
+                className="group relative"
+              >
+                <div className="relative px-6 md:px-8 py-4 md:py-5 bg-primary-900/30 border border-primary-700/40 hover:border-primary-600/60 rounded-lg backdrop-blur-sm transition-all duration-300 hover:bg-primary-900/40">
+                  <motion.span
+                    className="text-lg md:text-xl lg:text-2xl font-serif font-medium text-primary-100 group-hover:text-primary-50 transition-colors"
+                    style={{ 
+                      letterSpacing: '0.01em',
+                      lineHeight: '1.4',
+                    }}
+                  >
+                    {pillar.text}
+                  </motion.span>
+                  {/* Subtle glow effect on hover */}
+                  <motion.div
+                    className="absolute inset-0 rounded-lg bg-gradient-to-r from-accent-400/0 via-accent-400/5 to-accent-400/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  />
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+
+        {/* CTA Button */}
+        <div className="text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1.2, ease: 'easeOut' }}
+          >
+            <a
+              href="#strategy"
+              className="inline-flex items-center gap-2 px-10 py-4 bg-primary-800/90 hover:bg-primary-700/90 border border-primary-700/50 hover:border-primary-600/70 text-primary-50 font-medium transition-all duration-300 group backdrop-blur-sm"
+            >
+              Explore Strategy
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </a>
+          </motion.div>
+        </div>
       </motion.div>
 
       {/* Scroll Indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 1 }}
+        transition={{ duration: 1, delay: 1.2 }}
         className="absolute bottom-24 left-1/2 transform -translate-x-1/2 z-20"
       >
         <motion.div

@@ -34,7 +34,7 @@ export default function ContactFooter() {
               className="flex flex-col sm:flex-row gap-4 justify-center items-center"
             >
               <a
-                href="mailto:investorrelations@armcapital.com"
+                href="mailto:investorsrelations@arm-assets.com"
                 className="inline-flex items-center gap-3 px-8 py-4 bg-primary-800 hover:bg-primary-700 border border-primary-700 hover:border-primary-600 text-primary-50 font-medium transition-all duration-300 group"
               >
                 <Mail className="w-5 h-5" />
@@ -97,8 +97,8 @@ export default function ContactFooter() {
                 </li>
                 <li className="flex items-center gap-2">
                   <Mail className="w-4 h-4" />
-                  <a href="mailto:investorrelations@armcapital.com" className="hover:text-primary-300 transition-colors">
-                    investorrelations@armcapital.com
+                  <a href="mailto:investorsrelations@arm-assets.com" className="hover:text-primary-300 transition-colors">
+                    investorsrelations@arm-assets.com
                   </a>
                 </li>
               </ul>
