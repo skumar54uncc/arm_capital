@@ -109,6 +109,19 @@ npm start
 - Mapbox integration is optional - the map will work without a token but with limited functionality
 - All animations are subtle and professional, avoiding marketing-style effects
 
+## Deployment
+
+This website can be deployed to:
+- **Vercel** (Recommended): https://vercel.com
+- **Netlify**: https://netlify.com
+- **GitHub Pages**: Requires static export
+
+See `DEPLOYMENT_GUIDE.md` for detailed deployment instructions.
+
+## Repository
+
+GitHub: https://github.com/skumar54uncc/arm_capital
+
 ## License
 
 Proprietary - ARM Capital. All rights reserved.
