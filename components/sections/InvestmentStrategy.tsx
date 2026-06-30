@@ -2,35 +2,31 @@
 
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
-import { useRef, useState } from 'react'
-import { TrendingUp, TrendingDown, Globe, BarChart3, Brain, Building2, Heart, Bot, Zap, Code } from 'lucide-react'
+import { useRef } from 'react'
+import { TrendingUp, TrendingDown, Globe, BarChart3 } from 'lucide-react'
 
-const sectors = [
-  { name: 'AI & Machine Learning', icon: Brain },
-  { name: 'Financial Services', icon: Building2 },
-  { name: 'Medical and Biotech', icon: Heart },
-  { name: 'Robotics', icon: Bot },
-  { name: 'Energy', icon: Zap },
-  { name: 'Software & Internet', icon: Code },
-]
-
-const strategyData = {
-  long: {
+const positions = [
+  {
     title: 'Long Positions',
-    description: 'Businesses with potential for margin expansion driven by operating leverage, favourable input costs, and macro tailwinds.',
-    focus: 'Focus on IRR over 3-5 years versus normalised returns appropriate for their market cap, business model, and industry norms.',
+    description:
+      'Businesses with potential for margin expansion driven by operating leverage, favourable input costs, and macro tailwinds.',
+    focus:
+      'Focus on IRR over 3-5 years versus normalised returns appropriate for their market cap, business model, and industry norms.',
+    icon: TrendingUp,
   },
-  short: {
+  {
     title: 'Short Positions',
-    description: 'Short book comprises stories with overhyped business models, structural weaknesses, and valuations disconnected from fundamentals.',
-    focus: 'Inconsistencies between reported earnings and cash flows, strong momentum disconnected from underlying value.',
+    description:
+      'Short book comprises stories with overhyped business models, structural weaknesses, and valuations disconnected from fundamentals.',
+    focus:
+      'Inconsistencies between reported earnings and cash flows, strong momentum disconnected from underlying value.',
+    icon: TrendingDown,
   },
-}
+]
 
 export default function InvestmentStrategy() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
-  const [activeTab, setActiveTab] = useState<'long' | 'short'>('long')
 
   return (
     <section id="strategy" ref={ref} className="section-padding bg-primary-900/30">
@@ -54,9 +50,9 @@ export default function InvestmentStrategy() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="mb-16"
+          className="mb-12"
         >
-          <div className="grid md:grid-cols-3 gap-6 mb-8">
+          <div className="grid md:grid-cols-3 gap-6">
             <div className="p-6 bg-primary-900/50 border border-primary-800">
               <div className="flex items-center gap-3 mb-3">
                 <BarChart3 className="w-6 h-6 text-accent-400" />
@@ -66,7 +62,7 @@ export default function InvestmentStrategy() {
                 10-15 core positions, diversified across sectors and geographies. Net long exposure of 60-70% (longs) and 30-40% (shorts).
               </p>
             </div>
-            
+
             <div className="p-6 bg-primary-900/50 border border-primary-800">
               <div className="flex items-center gap-3 mb-3">
                 <Globe className="w-6 h-6 text-accent-400" />
@@ -89,90 +85,38 @@ export default function InvestmentStrategy() {
           </div>
         </motion.div>
 
-        {/* Long/Short Framework */}
+        {/* Long & Short Positions */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="mb-16"
+          className="grid md:grid-cols-2 gap-6"
         >
-          <div className="flex gap-4 mb-8 border-b border-primary-800">
-            <button
-              onClick={() => setActiveTab('long')}
-              className={`px-6 py-3 font-medium transition-all duration-300 ${
-                activeTab === 'long'
-                  ? 'text-primary-50 border-b-2 border-accent-400'
-                  : 'text-primary-400 hover:text-primary-300'
-              }`}
-            >
-              <TrendingUp className="w-5 h-5 inline mr-2" />
-              Long Framework
-            </button>
-            <button
-              onClick={() => setActiveTab('short')}
-              className={`px-6 py-3 font-medium transition-all duration-300 ${
-                activeTab === 'short'
-                  ? 'text-primary-50 border-b-2 border-accent-400'
-                  : 'text-primary-400 hover:text-primary-300'
-              }`}
-            >
-              <TrendingDown className="w-5 h-5 inline mr-2" />
-              Short Framework
-            </button>
-          </div>
-
-          <motion.div
-            key={activeTab}
-            initial={{ opacity: 0, x: activeTab === 'long' ? -20 : 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.4 }}
-            className="p-8 bg-primary-900/50 border border-primary-800"
-          >
-            <h3 className="text-2xl font-serif font-bold mb-4 text-primary-50">
-              {strategyData[activeTab].title}
-            </h3>
-            <p className="text-primary-300 mb-4 leading-relaxed text-lg">
-              {strategyData[activeTab].description}
-            </p>
-            <p className="text-primary-400 italic">
-              {strategyData[activeTab].focus}
-            </p>
-          </motion.div>
-        </motion.div>
-
-        {/* Sector Exposure */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-        >
-          <h3 className="text-3xl md:text-4xl font-serif font-bold mb-10 md:mb-12 text-center">
-            Sector Focus
-          </h3>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-5 md:gap-6">
-            {sectors.map((sector, index) => {
-              const Icon = sector.icon
-              return (
-                <motion.div
-                  key={sector.name}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
-                  transition={{ duration: 0.4, delay: 0.7 + index * 0.1 }}
-                  className="p-6 md:p-8 bg-primary-900/50 border border-primary-800 hover:border-primary-700 hover:bg-primary-900/70 transition-all duration-300 text-center group"
-                >
-                  <div className="flex flex-col items-center gap-4">
-                    <div className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-primary-800/50 flex items-center justify-center group-hover:bg-accent-400/10 transition-colors duration-300">
-                      <Icon className="w-6 h-6 md:w-7 md:h-7 text-accent-400 group-hover:text-accent-300 transition-colors duration-300" />
-                    </div>
-                    <p className="text-base md:text-lg font-medium text-primary-200 leading-tight">{sector.name}</p>
-                  </div>
-                </motion.div>
-              )
-            })}
-          </div>
-          <p className="text-xs text-primary-500 text-center mt-8 md:mt-10 italic">
-            For illustrative purposes only. Sector allocations may vary based on market conditions and opportunity set.
-          </p>
+          {positions.map((position, index) => {
+            const Icon = position.icon
+            return (
+              <motion.div
+                key={position.title}
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
+                className="p-8 md:p-10 bg-primary-900/50 border border-primary-800"
+              >
+                <div className="flex items-center gap-3 mb-5">
+                  <Icon className="w-6 h-6 text-accent-400" />
+                  <h3 className="text-2xl font-serif font-bold text-primary-50">
+                    {position.title}
+                  </h3>
+                </div>
+                <p className="text-primary-300 mb-5 leading-relaxed text-lg">
+                  {position.description}
+                </p>
+                <p className="text-primary-400 italic text-sm leading-relaxed">
+                  {position.focus}
+                </p>
+              </motion.div>
+            )
+          })}
         </motion.div>
       </div>
     </section>
